@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button cal;
+    Button nextPage;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -25,9 +25,9 @@ public class MainActivity extends AppCompatActivity {
 
         LayoutInflater li = getLayoutInflater();
 
+        View layout = li.inflate(R.layout.customtoast, (ViewGroup) findViewById(R.id.custom_toast_layout));
 
-        View layout = li.inflate(R.layout.customtoast, (ViewGroup)
-                findViewById(R.id.custom_toast_layout));
+        nextPage = (Button) findViewById(R.id.button);
 
         Toast toast = new Toast(getApplicationContext());
         toast.setDuration(Toast.LENGTH_SHORT);
@@ -38,21 +38,12 @@ public class MainActivity extends AppCompatActivity {
         toast.show();
 
 
-        cal = (Button) findViewById(R.id.button);
-        cal.setOnClickListener(new View.OnClickListener() {
+        nextPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                openFirstActivity();
+                Intent intent = new Intent(MainActivity.this,FirstActivity.class);
+                startActivity(intent);
             }
         });
-
-    }
-
-
-    public void openFirstActivity(){
-
-        Intent nwintent = new Intent(this, FirstActivity.class);
-        startActivity(nwintent);
     }
 }
